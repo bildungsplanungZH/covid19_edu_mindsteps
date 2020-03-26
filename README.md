@@ -1,6 +1,12 @@
 # Mindsteps data for Monitoring Covid 19
 
+## Datenlieferant [source]
+
+Universität Zürich, Institut für Bildungsevaluation
+
 ## Beteiligte
+
+Nina König <nina.koenig@ibe.uzh.ch>, Institut für Bildungsevaluation
 
 Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
 
@@ -8,9 +14,15 @@ Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
 
 Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps.ch/) im Rahmen des Projekts [Monitoring Covid19](https://github.com/statistikZH/monitoring_covid19) öffentlich verfügbar machen.
 
-## Indikatorbeschreibung
+## Indikatorbeschreibung [variable_long]
 
 Anzahl durchgeführter Mindsteps-Aufgabenserien
+
+## Open data [public]
+
+Kann die Variable OGD gestellt werden?
+
+* Ja
 
 ## Struktur der Basisdaten:
 
