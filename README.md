@@ -36,6 +36,8 @@ Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps
 
 [update] täglich
 
+[Spec](https://docs.google.com/spreadsheets/d/14VtzDRt-HymgvRWF9n7LdQJf2b2chOUdTbsWG7DWjPw/edit#gid=0) in Tabellenform
+
 ## Open data
 
 Kann die Variable OGD gestellt werden?
