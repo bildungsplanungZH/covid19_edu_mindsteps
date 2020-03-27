@@ -14,7 +14,7 @@ Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
 
 ## Ziel
 
-Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps.ch/) im Rahmen des Projekts [Monitoring Covid19](https://github.com/statistikZH/monitoring_covid19) öffentlich verfügbar machen.
+Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps.ch/) im Rahmen des Projekts [Covid19-Monitoring](https://github.com/statistikZH/covid19monitoring) öffentlich verfügbar machen.
 
 ## Vorgehen
 
