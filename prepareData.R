@@ -6,7 +6,6 @@
 
 # Import libraries
 library(dplyr) # Version: ‘0.8.5’
-library(tidyr) # ‘1.0.2’
 
 # Number formatting
 options(scipen = 1000000)
