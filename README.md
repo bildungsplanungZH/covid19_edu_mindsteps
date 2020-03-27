@@ -1,8 +1,8 @@
 # Mindsteps data for Monitoring Covid 19
 
-## Datenlieferant [source]
+## Datenlieferant
 
-Universität Zürich, Institut für Bildungsevaluation
+[source] Universität Zürich, Institut für Bildungsevaluation
 
 ## Beteiligte
 
@@ -22,15 +22,25 @@ Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps
 * R-Skript `prepareDate.R` zum Generieren der erforderlichen Datenstruktur (Flavian)
 * Generieren möglichst automatisch auslösen
 
-## Indikatorbeschreibung [variable_long]
+## Indikatorbeschreibung
 
-Anzahl durchgeführter Mindsteps-Aufgabenserien
+[topic] Bildung
 
-## Open data [public]
+[variable_short] training_mindsteps
+
+[variable_long] Nutzung der Lernplattform Mindsteps
+
+[location] Deutschschweiz (default)
+
+[unit] Anzahl durchgeführter Aufgabenserien
+
+[update] täglich
+
+## Open data
 
 Kann die Variable OGD gestellt werden?
 
-* Ja
+[public] Ja
 
 ## Struktur der Basisdaten:
 
