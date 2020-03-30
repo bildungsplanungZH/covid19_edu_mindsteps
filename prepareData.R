@@ -1,37 +1,62 @@
 # prepare mindsteps data for monitoring covid19
 #
-# Author: Flavian Imlig <flavian.imlig@bi.zh.ch>
-# Date: 24.03.2020
+# Authors: Katharina Kaelin <katharina.kaelin@statistik.ji.zh.ch>, Flavian Imlig <flavian.imlig@bi.zh.ch>
+# Date: 30.03.2020
 ###############################################################################
 
 # Import libraries
-library(dplyr) # Version: ‘0.8.5’
+library(dplyr) # Version >= 0.8.5
+library(assertthat) # Version >= 0.2.1
 
 # Number formatting
 options(scipen = 1000000)
 options(digits = 6)
 
-# import dat
-url_dat  <- "https://raw.githubusercontent.com/bildungsmonitoringZH/covid19_edu_mindsteps/master/base_data_IBE.csv?token=AJX6OINGRDZVQ4TGPHEYQ3K6Q5TJS"
-dat <- read.csv(url(url_dat), header=T, sep=",", stringsAsFactors=FALSE, encoding="UTF-8")
+# get and transform data function
+getData <- function(url_dat)
+{
+    if(missing(url_dat)) url_dat <- "https://raw.githubusercontent.com/bildungsmonitoringZH/covid19_edu_mindsteps/master/base_data_IBE.csv?token=AJX6OINGRDZVQ4TGPHEYQ3K6Q5TJS"
+    
+    # import dat
+    dat <- read.csv(url(url_dat), header=T, sep=",", stringsAsFactors=FALSE, encoding="UTF-8")
+    
+    #prepare dat
+    dat_prep <- dat %>%
+        transmute(
+            'date' := as.POSIXct(paste(.data$date, "00:00:00", sep=" "), format="%Y-%m-%d"),
+            'value' := .data$n,
+            'topic' := "Bildung",
+            'variable_short' := "training_mindsteps",
+            'variable_long' := "Nutzung der Lernplattform Mindsteps",
+            'location' := tidyr::replace_na(.data$region, "Deutschschweiz"),
+            'unit' := "Anzahl durchgeführter Aufgabenserien",
+            'source' := "Universität Zürich, Institut für Bildungsevaluation",
+            'update' := "täglich",
+            'public' := "ja",
+            'description' := "https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps"
+        )
+    
+    # return
+    return(dat_prep)
+}
 
-#prepare dat
-dat_prep <- dat %>%
-  mutate(
-    value = n,
-    topic = "Bildung",
-    variable_short = "training_mindsteps",
-    variable_long = "Nutzung der Lernplattform Mindsteps",
-    location = "Deutschschweiz",
-    unit= "Anzahl durchgeführter Aufgabenserien",
-    source = "Universität Zürich, Institut für Bildungsevaluation",
-    update = "täglich",
-    public = "ja",
-    description = "https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps"
-  ) %>%
-  select(-region, -comment,) %>%
-  select(date, value, topic, variable_short, variable_long, location, unit, source, update, public, description) 
+# test result function
+testTable <- function(df)
+{
+    df_names <- c('date', 'value', 'topic', 'variable_short', 'variable_long', 'location', 'unit', 'source', 'update', 'public', 'description')
+    
+    assert_that(is(df, 'data.frame'))
+    assert_that(identical(names(df), df_names))
+    
+    assert_that(is(df$date, 'POSIXct'))
+    assert_that(is(df$value, 'integer'))
+    purrr::walk(df_names[-c(1,2)], ~assert_that(is(get(.x, df), 'character')))
+    
+    return(invisible(NULL))
+}
 
-# export dat
+# main
+url_dat <- "https://raw.githubusercontent.com/bildungsmonitoringZH/covid19_edu_mindsteps/master/base_data_IBE.csv?token=AJX6OINGRDZVQ4TGPHEYQ3K6Q5TJS"
+dat_prep <- getData(url_dat)
+test <- testTable(dat_prep)
 write.table(dat_prep, "./Bildung_LernplattformMindsteps.csv", sep=",", fileEncoding="UTF-8", row.names = F)
-
