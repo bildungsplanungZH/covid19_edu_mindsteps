@@ -29,9 +29,9 @@ getData <- function(url_dat)
             'variable_short' := "training_mindsteps",
             'variable_long' := "Nutzung der Lernplattform Mindsteps",
             'location' := tidyr::replace_na(.data$region, "Deutschschweiz"),
-            'unit' := "Anzahl durchgeführter Aufgabenserien",
-            'source' := "Universität Zürich, Institut für Bildungsevaluation",
-            'update' := "täglich",
+            'unit' := "Anzahl durchgef\u00fchrter Aufgabenserien",
+            'source' := "Universit\u00e4t Zürich, Institut für Bildungsevaluation",
+            'update' := "t\u00e4glich",
             'public' := "ja",
             'description' := "https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps"
         )
