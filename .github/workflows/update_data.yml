@@ -1,0 +1,33 @@
+# based on an example from https://github.com/r-lib/actions/tree/master/examples
+
+name: Update data
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+jobs:
+  update_data:
+    runs-on: macos
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    
+    # Setup R and its depedencies
+    - uses: r-lib/actions/setup-r@master
+    - name: Install R dependencies
+      run: |
+        install.packages("tidyverse")
+      shell: Rscript {0}
+      
+    # Prepare data
+    - name: Prepare data with prepareData.R
+      run: Rscript prepareData.R
+
+    # Commit to repo with updated file
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.1
+      with:
+        commit_message: Update Bildung_LernplattformMindsteps.csv
+        branch: ${{ github.head_ref }}
