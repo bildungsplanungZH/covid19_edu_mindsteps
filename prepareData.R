@@ -43,14 +43,12 @@ getData <- function(url_dat)
 # test result function
 testTable <- function(df)
 {
-    df_names <- c('date', 'value', 'topic', 'variable_short', 'variable_long', 'location', 'unit', 'source', 'update', 'public', 'description')
+    df_spec <- readRDS(url('https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps/raw/master/df_spec.rds'))
     
     assert_that(is(df, 'data.frame'))
-    assert_that(identical(names(df), df_names))
+    assert_that(identical(names(df), df_spec$name))
     
-    assert_that(is(df$date, 'POSIXct'))
-    assert_that(is(df$value, 'integer'))
-    purrr::walk(df_names[-c(1,2)], ~assert_that(is(get(.x, df), 'character')))
+    purrr::pwalk(as.list(df_spec), ~assert_that(is(get(.x, df), .y)))
     
     return(invisible(NULL))
 }
