@@ -3,8 +3,9 @@
 name: Update data
 
 on:
-  schedule:
-    - cron:  '5 6 * * *' # everyday at 06:05 UTC
+  push:
+    paths:
+    - 'base_data_IBE.csv'
 
 jobs:
   update_data:
