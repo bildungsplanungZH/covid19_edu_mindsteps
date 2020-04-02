@@ -1,4 +1,9 @@
-# Mindsteps data for Monitoring Covid 19
+![](assets/ktzh_bi_logo_de-300x88.jpg)
+![](assets/uzh_logo_d_pos-300x88.jpg)
+
+# Gesellschaftsmonitoring COVID19, Daten Mindsteps
+
+Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps.ch/) im Rahmen des Projekts [Gesellschaftsmonitoring COVID19](https://statistikzh.github.io/covid19monitoring/)
 
 ## Datenlieferant
 
@@ -11,16 +16,6 @@ Lukas Giesinger <lukas.giesinger@uzh.ch>, Institut für Bildungsevaluation
 Nina König <nina.koenig@ibe.uzh.ch>, Institut für Bildungsevaluation
 
 Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
-
-## Ziel
-
-Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps.ch/) im Rahmen des Projekts [Gesellschaftsmonitoring COVID19](https://statistikzh.github.io/covid19monitoring/) öffentlich verfügbar machen.
-
-## Vorgehen
-
-* Manuelles Update des Datenfiles `base_data_IBE.csv` durch das IBE, in der Regel täglich (Nina, Lukas)
-* R-Skript `prepareDate.R` zum Generieren der erforderlichen Datenstruktur (Flavian)
-* Generieren möglichst automatisch auslösen
 
 ## Indikatorbeschreibung
 
@@ -36,6 +31,8 @@ Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps
 
 [update] täglich
 
+[description] https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps
+
 ## Open data
 
 Kann die Variable OGD gestellt werden?
@@ -50,3 +47,8 @@ Datei `base_data_IBE.csv`
 * `region`: (optional) regionale Einschränkung der Nutzer, z. B. Kanton ZH, leer lassen für Gesamtzahl der Deutschschweiz
 * `value`: Anzahl, nur Ganzzahlen verwenden
 * `comment`: Kommentare zum Eintrag
+
+## Vorgehen
+
+* Manuelles Update des Datenfiles `base_data_IBE.csv` durch das IBE, in der Regel täglich.
+* R-Skript `prepareDate.R` zum Generieren der erforderlichen Datenstruktur, automatisch ausgeführt bei update von `base_data_IBE.csv`.
