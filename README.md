@@ -1,5 +1,9 @@
-![](assets/ktzh_bi_logo_de-300x88.jpg)
-![](assets/uzh_logo_d_pos-300x88.jpg)
+---
+pagetitle: Gesellschaftsmonitoring COVID19, Daten Mindsteps
+---
+
+![](https://github.com/bildungsmonitoringZH/bildungsmonitoringZH.github.io/raw/master/assets/ktzh_bi_logo_de-300x88.jpg)
+![](https://github.com/bildungsmonitoringZH/bildungsmonitoringZH.github.io/raw/master/assets/uzh_logo_d_pos-300x88.jpg)
 
 # Gesellschaftsmonitoring COVID19, Daten Mindsteps
 
@@ -7,7 +11,7 @@ Daten zur täglichen Nutzung der Lernplattform [Mindsteps](https://www.mindsteps
 
 ## Datenlieferant
 
-[source] Universität Zürich, Institut für Bildungsevaluation
+Universität Zürich, Institut für Bildungsevaluation
 
 ## Beteiligte
 
@@ -19,25 +23,11 @@ Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
 
 ## Indikatorbeschreibung
 
-[topic] Bildung
+### Nutzung der Lernplattform Mindsteps
 
-[variable_short] training_mindsteps
+Der Indikator beschreibt die Anzahl durchgeführter Aufgabenserien pro Tag.
 
-[variable_long] Nutzung der Lernplattform Mindsteps
-
-[location] Deutschschweiz (default)
-
-[unit] Anzahl durchgeführter Aufgabenserien
-
-[update] täglich
-
-[description] https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps
-
-## Open data
-
-Kann die Variable OGD gestellt werden?
-
-[public] Ja
+Die Plattform Mindsteps wurde für die Kantone Aargau, Basel-Landschaft, Basel-Stadt und Solothurn entwickelt und in diesen Kantonen verwendet. Am 17. März 2020 haben die vier Kantone die Plattform allen Deutschschweizer Schulen kostenlos zur Verfügung gestellt, zumindest bis Ende Schuljahr 2019/20 (weitere Informationen [hier](https://www.mindsteps.ch/header/aktuelles/detail/kostenlose-nutzung-von-mindsteps-bis-ende-schuljahr-201920/)).
 
 ## Struktur der Basisdaten:
 
