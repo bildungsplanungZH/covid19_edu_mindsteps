@@ -1,43 +1,60 @@
 # prepare mindsteps data for monitoring covid19
 #
 # Authors: Katharina Kaelin <katharina.kaelin@statistik.ji.zh.ch>, Flavian Imlig <flavian.imlig@bi.zh.ch>
-# Date: 30.03.2020
+# Date: 23.04.2020
 ###############################################################################
 
 # Import libraries
 library(dplyr) # Version >= 0.8.5
 library(assertthat) # Version >= 0.2.1
+library(jsonlite)
 
 # Number formatting
 options(scipen = 1000000)
 options(digits = 6)
 
 # get and transform data function
-getData <- function(url_dat)
+getData <- function(file)
 {
-    if(missing(url_dat)) url_dat <- "https://raw.githubusercontent.com/bildungsmonitoringZH/covid19_edu_mindsteps/master/base_data_IBE.csv?token=AJX6OINGRDZVQ4TGPHEYQ3K6Q5TJS"
+    if(missing(file)) file <- "base_data_IBE.csv"
     
     # import dat
-    dat <- read.csv(url(url_dat), header=T, sep=",", stringsAsFactors=FALSE, encoding="UTF-8")
+    data_raw <- read.csv(file)
     
-    #prepare dat
-    dat_prep <- dat %>%
+    # get meta and specs
+    meta <- getMetadata()
+    
+    df_spec <- readRDS(url('https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps/raw/master/df_spec.rds'))
+    
+    # prepare data
+    data_t <- data_raw %>%
         transmute(
             'date' := as.POSIXct(paste(.data$date, "00:00:00", sep=" "), format="%Y-%m-%d"),
             'value' := .data$n,
-            'topic' := "Bildung",
-            'variable_short' := "training_mindsteps",
-            'variable_long' := "Nutzung der Lernplattform Mindsteps",
-            'location' := tidyr::replace_na(.data$region, "Deutschschweiz"),
-            'unit' := "Anzahl durchgef\u00fchrter Aufgabenserien",
-            'source' := "Universit\u00e4t Zürich, Institut für Bildungsevaluation",
-            'update' := "t\u00e4glich",
-            'public' := "ja",
-            'description' := "https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps"
-        )
+            'variable_short' := meta$variable_short,
+            'location' := tidyr::replace_na(.data$region, meta$location))
+    
+    # add metadata
+    data <- data_t %>%
+        left_join(meta %>% select(-.data$location), by = 'variable_short') %>%
+        arrange(.data$date) %>%
+        select(df_spec$name)
     
     # return
-    return(dat_prep)
+    return(data)
+}
+
+# load metadata function
+getMetadata <- function(file)
+{
+    if( missing(file) ) file <- 'mindsteps_meta.json'
+    assert_that(is.string(file))
+    assert_that(file.exists(file))
+    
+    meta_raw <- read_json(file, simplifyVector = F)
+    meta_t <- lapply(meta_raw, as.character)
+    meta <- as.data.frame(meta_t, stringsAsFactors = F)
+    return(meta)
 }
 
 # test result function
@@ -54,7 +71,6 @@ testTable <- function(df)
 }
 
 # main
-url_dat <- "https://raw.githubusercontent.com/bildungsmonitoringZH/covid19_edu_mindsteps/master/base_data_IBE.csv?token=AJX6OINGRDZVQ4TGPHEYQ3K6Q5TJS"
-dat_prep <- getData(url_dat)
-test <- testTable(dat_prep)
-write.table(dat_prep, "./Bildung_LernplattformMindsteps.csv", sep=",", fileEncoding="UTF-8", row.names = F)
+data_prep <- getData()
+test <- testTable(data_prep)
+write.table(data_prep, "./Bildung_LernplattformMindsteps.csv", sep=",", fileEncoding="UTF-8", row.names = F)
