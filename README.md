@@ -40,5 +40,5 @@ Datei `base_data_IBE.csv`
 
 ## Vorgehen
 
-* Manuelles Update des Datenfiles `base_data_IBE.csv` durch das IBE, in der Regel täglich.
+* Manuelles Update des Datenfiles `base_data_IBE.csv` durch das IBE, in der Regel wöchentlich.
 * R-Skript `prepareDate.R` zum Generieren der erforderlichen Datenstruktur, automatisch ausgeführt bei update von `base_data_IBE.csv`.
