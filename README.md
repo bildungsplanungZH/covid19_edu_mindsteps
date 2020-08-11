@@ -27,7 +27,7 @@ Flavian Imlig <flavian.imlig@bi.zh.ch>, Bildungsdirektion
 
 Der Indikator beschreibt die Anzahl durchgeführter Aufgabenserien pro Tag.
 
-Die Plattform Mindsteps wurde für die Kantone Aargau, Basel-Landschaft, Basel-Stadt und Solothurn entwickelt und wird in mehreren Kantone der Deutschschweiz verwendet. Die Plattform eignet sich für die Unterstützung des kompetenzorientierten Lernens im Klassenzimmer wie im Fernunterricht  (weitere Informationen [hier](https://www.mindsteps.ch/)).
+Die Plattform Mindsteps wurde für die Kantone Aargau, Basel-Landschaft, Basel-Stadt und Solothurn entwickelt und wird in mehreren Kantonen der Deutschschweiz genutzt. Die Plattform eignet sich für die Unterstützung des kompetenzorientierten Lernens im Klassenzimmer wie im Fernunterricht  (weitere Informationen [hier](https://www.mindsteps.ch/)).
 
 ## Struktur der Basisdaten:
 
