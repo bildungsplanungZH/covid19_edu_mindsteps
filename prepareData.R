@@ -1,13 +1,10 @@
 # prepare mindsteps data for monitoring covid19
 #
 # Authors: Katharina Kaelin <katharina.kaelin@statistik.ji.zh.ch>, Flavian Imlig <flavian.imlig@bi.zh.ch>
-# Date: 23.04.2020
+# Date: 08.03.2022
 ###############################################################################
 
-# Import libraries
-library(dplyr) # Version >= 0.8.5
-library(assertthat) # Version >= 0.2.1
-library(jsonlite)
+source('_dependencies.R')
 
 # Number formatting
 options(scipen = 1000000)
