@@ -4,7 +4,7 @@
 # Date: 08.03.2022
 ###############################################################################
 
-source('_dependencies.R')
+library(dplyr)
 
 # Number formatting
 options(scipen = 1000000)
@@ -45,10 +45,10 @@ getData <- function(file)
 getMetadata <- function(file)
 {
     if( missing(file) ) file <- 'mindsteps_meta.json'
-    assert_that(is.string(file))
-    assert_that(file.exists(file))
+    assertthat::assert_that(assertthat::is.string(file))
+    assertthat::assert_that(file.exists(file))
     
-    meta_raw <- read_json(file, simplifyVector = F)
+    meta_raw <- jsonlite::read_json(file, simplifyVector = F)
     meta_t <- lapply(meta_raw, as.character)
     meta <- as.data.frame(meta_t, stringsAsFactors = F)
     return(meta)
@@ -59,10 +59,10 @@ testTable <- function(df)
 {
     df_spec <- readRDS(url('https://github.com/bildungsmonitoringZH/covid19_edu_mindsteps/raw/master/df_spec.rds'))
     
-    assert_that(is(df, 'data.frame'))
-    assert_that(identical(names(df), df_spec$name))
+    assertthat::assert_that(is(df, 'data.frame'))
+    assertthat::assert_that(identical(names(df), df_spec$name))
     
-    purrr::pwalk(as.list(df_spec), ~assert_that(is(get(.x, df), .y)))
+    purrr::pwalk(as.list(df_spec), ~assertthat::assert_that(is(get(.x, df), .y)))
     
     return(invisible(NULL))
 }
